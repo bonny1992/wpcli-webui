@@ -9,10 +9,15 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import Instance from 'components/Instance/Loadable';
+
 export default function HomePage() {
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <div>
+      <Instance url="https://site.com" password="asdbcasd" />
+      <Instance url="https://site.com" password="asdbcasd" />
+      <Instance url="https://site.com" password="asdbcasd" />
+      <Instance url="https://site.com" password="asdbcasd" />
+    </div>
   );
 }
