@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
@@ -14,18 +14,31 @@ import Col from 'react-bootstrap/Col'
 
 function Instance(props) {
 
-  let isShown = false;
+  const [isVisible, setVisible] = useState(false)
+  const [password, setPassword] = useState('*********')
 
-  const hidePassword = () => {
-    isShown = !isShown
+  const togglePassword = () => {
+    console.log(password)
+    if(!isVisible) {
+      setVisible(true)
+      setPassword(props.password)
+    }
+    else {
+      setVisible(false)
+      setPassword('*********')
+    }
+    
+
   }
   return <div>
+    <hr />
     <Container>
       <Row>
-        <Col><a href={props.url}>{props.url}</a></Col>
-        <Col><input type="text" value={props.password} readOnly /></Col>  { /* TODO: Blurred until click */ }
+        <Col><h2>URL</h2><a href={props.url} target='_new'>{props.url}</a></Col>
+        <Col><h2>Password</h2><p onClick={togglePassword}>{password}</p></Col>  { /* TODO: Blurred until click */ }
       </Row>
     </Container>
+    <hr />
   </div>;
 }
 
